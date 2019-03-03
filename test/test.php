@@ -2,7 +2,7 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$dotenv = new Dotenv\Dotenv('.');
+$dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
 $client = new \AGSystems\GitLab\REST\Client(
@@ -21,4 +21,8 @@ var_export(
             ],
         ];
     }, $client->projects->get())
+);
+
+var_export(
+    $client->groups(21)->issues->get()
 );
